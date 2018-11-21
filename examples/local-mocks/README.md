@@ -15,7 +15,7 @@ image with InfluxDB installed on Ubuntu:
 packer build -only=influxdb-docker-ubuntu influxdb.json
 ```
 
-To run the Docker image, head into one of the `examples/influxdb-xxx/local-test` folders and run:
+To run the Docker image, head into either the `examples/influxdb-single-cluster/local-test` or the `examples/influxdb-multi-cluster/local-test` folder and run:
 
 ```
 docker-compose up

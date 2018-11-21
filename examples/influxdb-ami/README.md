@@ -20,8 +20,8 @@ To build the InfluxDB AMI:
    set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables.
 1. Update the `variables` section of the `influxdb.json` Packer template to specify the AWS region and InfluxDB
    version you wish to use.
-1. To build an Ubuntu AMI for InfluxDB Enterprise: `packer build -only=ubuntu-ami influxdb.json`.
-1. To build an Amazon Linux AMI for InfluxDB Enterprise: `packer build -only=amazon-linux-ami influxdb.json`.
+1. To build an Ubuntu AMI for InfluxDB Enterprise: `packer build -only=influxdb-ami-ubuntu influxdb.json`.
+1. To build an Amazon Linux AMI for InfluxDB Enterprise: `packer build -only=influxdb-ami-amazon-linux influxdb.json`.
 
 When the build finishes, it will output the IDs of the new AMIs. To see how to deploy this AMI, check out the 
 [influxdb-single-cluster](https://github.com/gruntwork-io/terraform-aws-influx/tree/master/examples/influxdb-single-cluster) and
@@ -58,7 +58,7 @@ Your code should look more like this:
     "type": "shell",
     "inline": [
       "git clone --branch <MODULE_VERSION> https://github.com/gruntwork-io/terraform-aws-influx.git /tmp/terraform-aws-influx",
-      "/tmp/terraform-aws-influx/modules/install-influxdb/install-influxdb --version {{user `influxdb_version`}}"
+      "/tmp/terraform-aws-influx/modules/install-influxdb/install-influxdb --version {{user `version`}}"
     ],
     "pause_before": "30s"
   }]
